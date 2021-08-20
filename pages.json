@@ -9,6 +9,14 @@
 		   }
 		},
 		{
+			"path":"pages/register/register",
+			"style":
+			{
+				   "navigationBarTitleText":"",
+				   "enablePullDownRefresh":false
+			}
+		},
+		{
 			"path":"pages/demo/demo",
 			"style":
 			{
