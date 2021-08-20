@@ -18,7 +18,27 @@
 			}
 		},
 		methods: {
-			
+			register:function(){
+				//调用 获取登录信息 接口
+				uni.login({
+					provider:"weixin",
+					// 成功回调
+					success:function(resp){
+						// 临时授权字符串
+						let js_code = resp.code;
+						console.log('code: '+js_code);
+						//  获取用户账号基本信息
+						uni.getUserInfo({
+							provider:'weixin',
+							success:function(resp){
+								let nickName = resp.userInfo.nickName;
+								let avatarUrl = resp.userInfo.avatarUrl;
+								console.log(avatarUrl);
+							}
+						});
+					}
+				})
+			}
 		}
 	}
 </script>
