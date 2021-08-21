@@ -17,6 +17,7 @@ let natappUrl = "https://zackyj.mynatapp.cc/emos-wx-api"
 let baseUrl = natappUrl
 Vue.prototype.url={
 	register:baseUrl+"/user/register",
+	login:baseUrl + "/user/login",
 }
 
 //全局 Ajax 封装对象

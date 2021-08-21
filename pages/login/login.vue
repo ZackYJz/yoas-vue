@@ -23,6 +23,31 @@
 				uni.navigateTo({
 					url:"../register/register"
 				})
+			},
+			login:function(){
+				let that = this;
+				uni.login({
+					provider: 'weixin',
+					success: function(resp) {
+						let code = resp.code;
+						let token = uni.getStorageSync('token');
+						that.ajax(that.url.login, 'POST', { code: code }, function(resp) {
+							let permission = resp.data.permission;
+							uni.setStorageSync('permission', permission);
+							//跳转到登陆页面
+							console.log('登录成功');
+							// uni.switchTab({
+							// 	url: '../index/index'
+							// });
+						});
+					},
+					fail: function(e) {
+						uni.showToast({
+							icon: 'none',
+							title: ' 系统异常'
+						});
+					}
+				});
 			}
 		}
 	}
