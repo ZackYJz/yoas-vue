@@ -35,10 +35,9 @@
 							let permission = resp.data.permission;
 							uni.setStorageSync('permission', permission);
 							//跳转到登陆页面
-							console.log('登录成功');
-							// uni.switchTab({
-							// 	url: '../index/index'
-							// });
+							uni.switchTab({
+								url: '../index/index'
+							});
 						});
 					},
 					fail: function(e) {

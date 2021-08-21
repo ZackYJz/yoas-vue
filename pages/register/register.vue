@@ -60,9 +60,9 @@
 									let token = resp.data.token;
 									uni.setStorageSync('token', token);
 									uni.setStorageSync('permission', permission);
-									// uni.switchTab({
-									// 	url: '../index/index'
-									// });
+									uni.switchTab({
+										url: '../index/index'
+									});
 								});
 							}
 						})
@@ -77,5 +77,5 @@
 </script>
 
 <style lang="less">
-	@import url("register.less");
+	
 </style>

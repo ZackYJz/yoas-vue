@@ -17,6 +17,16 @@
 			}
 		},
 		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页-YOAS",
+				"enablePullDownRefresh":false,
+				 "app-plus":{
+				            "bounce":"none" // 将回弹属性关掉
+					}
+			}
+		},
+		{
 			"path":"pages/demo/demo",
 			"style":
 			{
@@ -25,9 +35,37 @@
 			}
 		},
 		{
-			"path": "pages/index/index",
+			"path": "pages/meeting_list/meeting_list",
 			"style": {
-				"navigationBarTitleText": "首页-YOAS"
+				"navigationBarTitleText": "会议列表",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/document/document",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/contacts/contacts",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/checkin/checkin",
+			"style": {
+				"navigationBarTitleText": "在线签到",
+				"enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#F8F8F8",
+				"navigationBarTextStyle": "black"
 			}
 		}
 	],
@@ -38,5 +76,46 @@
 		"navigationBarBackgroundColor": "#3474FF",
 //		"backgroundColor": "#F8F8F8"
 		"backgroundColor": "#EEEEF4"
-	}
+	},
+	"tabBar": {
+		"color": "#666",
+		"selectedColor": "#3474FF",
+		"list": [{
+				"text": "首页",
+				"pagePath": "pages/index/index",
+				"iconPath": "static/bar-1.png",
+				"selectedIconPath": "static/bar-1-active.png"
+			},
+			{
+				"text": "会议",
+				"pagePath": "pages/meeting_list/meeting_list",
+				"iconPath": "static/bar-2.png",
+				"selectedIconPath": "static/bar-2-active.png"
+			},
+			{
+				"text": "文档",
+				"pagePath": "pages/document/document",
+				"iconPath": "static/bar-3.png",
+				"selectedIconPath": "static/bar-3-active.png"
+			},
+			{
+				"text": "通讯录",
+				"pagePath": "pages/contacts/contacts",
+				"iconPath": "static/bar-4.png",
+				"selectedIconPath": "static/bar-4-active.png"
+			},
+			{
+				"text": "我的",
+				"pagePath": "pages/mine/mine",
+				"iconPath": "static/bar-5.png",
+				"selectedIconPath": "static/bar-5-active.png"
+			}
+		]
+	},
+	"easycom": {
+			"autoscan": true,
+			"custom": {
+				"tui-(.*)": "@/components/thorui/tui-$1/tui-$1.vue"
+			}
+		}
 }
