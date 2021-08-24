@@ -26,41 +26,20 @@ Vue.prototype.url={
 	validCanCheckIn: baseUrl + "/checkin/validCanCheckIn",
 	//查询当天签到状态
 	searchTodayCheckin: baseUrl + "/checkin/searchTodayCheckin",
-	searchUserSummary: baseUrl + "/user/searchUserSummary",
-	searchMonthCheckin: baseUrl + "/checkin/searchMonthCheckin",
-	refreshMessage: baseUrl + "/message/refreshMessage",
-	searchMessageByPage: baseUrl + "/message/searchMessageByPage",
-	searchMessageById: baseUrl + "/message/searchMessageById",
-	updateUnreadMessage: baseUrl + "/message/updateUnreadMessage",
-	deleteMessageRefById: baseUrl + "/message/deleteMessageRefById",
-	searchMyMeetingListByPage: baseUrl + "/meeting/searchMyMeetingListByPage",
-	searchUserGroupByDept: baseUrl + "/user/searchUserGroupByDept",
-	searchMembers: baseUrl + "/user/searchMembers",
-	insertMeeting: baseUrl + "/meeting/insertMeeting",
-	searchMeetingById: baseUrl + "/meeting/searchMeetingById",
-	updateMeetingInfo: baseUrl + "/meeting/updateMeetingInfo",
-	deleteMeetingById: baseUrl + "/meeting/deleteMeetingById",
-	searchUserTaskListByPage: workflow + "/workflow/searchUserTaskListByPage",
-	approvalMeeting: workflow + "/workflow/approvalMeeting",
-	selectUserPhotoAndName: baseUrl + "/user/selectUserPhotoAndName",
-	genUserSig: baseUrl + "/user/genUserSig",
-	searchRoomIdByUUID: baseUrl + "/meeting/searchRoomIdByUUID",
-	searchUserMeetingInMonth: baseUrl + "/meeting/searchUserMeetingInMonth",
-	searchRoleOwnPermission: baseUrl + "/role/searchRoleOwnPermission",
-	searchAllPermission:baseUrl+"/role/searchAllPermission",
-	insertRole: baseUrl + "/role/insertRole",
-	updateRolePermissions: baseUrl + "/role/updateRolePermissions",
-	searchAllRole:baseUrl+"/role/searchAllRole",
-	deleteRoleById:baseUrl+"/role/deleteRoleById",
-	searchAllDept: baseUrl + "/dept/searchAllDept",
-	insertDept: baseUrl + "/dept/insertDept",
-	deleteDeptById: baseUrl + "/dept/deleteDeptById",
-	updateDeptById: baseUrl + "/dept/updateDeptById",
-	insertUser: baseUrl + "/user/insertUser",
-	searchUserInfo: baseUrl + "/user/searchUserInfo",
-	searchUserSelfInfo: baseUrl + "/user/searchUserSelfInfo",
-	updateUserInfo: baseUrl + "/user/updateUserInfo",
-	deleteUserById: baseUrl + "/user/deleteUserById"
+	searchUserSummary: baseUrl + "/user/searchUserSummary"
+}
+
+// 全局权限验证
+Vue.prototype.checkPermission = function(perms) {
+	let permission = uni.getStorageSync("permission")
+	let result = false
+	for (let one of perms) {
+		if (permission.indexOf(one) != -1) {
+			result = true
+			break
+		}
+	}
+	return result
 }
 
 //全局 Ajax 封装对象
@@ -100,3 +79,4 @@ Vue.prototype.ajax = function(url,method,data,fun){
 		}
 	})
 }
+
