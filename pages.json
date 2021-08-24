@@ -111,11 +111,5 @@
 				"selectedIconPath": "static/bar-5-active.png"
 			}
 		]
-	},
-	"easycom": {
-			"autoscan": true,
-			"custom": {
-				"tui-(.*)": "@/components/thorui/tui-$1/tui-$1.vue"
-			}
-		}
+	}
 }

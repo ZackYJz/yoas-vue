@@ -31,6 +31,7 @@
 					success: function(resp) {
 						let code = resp.code;
 						let token = uni.getStorageSync('token');
+						console.log("login token："+token);
 						that.ajax(that.url.login, 'POST', { code: code }, function(resp) {
 							let permission = resp.data.permission;
 							uni.setStorageSync('permission', permission);

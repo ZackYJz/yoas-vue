@@ -55,7 +55,12 @@
             "urlCheck" : false,
             "minified" : true
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "获取签到地理位置"
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true

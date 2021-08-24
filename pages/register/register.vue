@@ -77,5 +77,5 @@
 </script>
 
 <style lang="less">
-	
+	@import url("register.less");
 </style>
