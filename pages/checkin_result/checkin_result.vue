@@ -57,7 +57,7 @@
 						<image src="../../static/icon-9.png" mode="widthFix" class="calendar-icon" v-if="one.type=='工作日'"></image>
 						<image src="../../static/icon-10.png" mode="widthFix" class="calendar-icon" v-if="one.type=='节假日'"></image>
 						<text class="day">{{one.day}}</text>
-						<text class="result green" v-if="one.status=='正常'">{{one.status}}</text>
+						<text class="result green" v-if="one.status=='出勤'">{{one.status}}</text>
 						<text class="result yellow" v-if="one.status=='迟到'">{{one.status}}</text>
 						<text class="result red" v-if="one.status=='缺勤'">{{one.status}}</text>
 					</view>
