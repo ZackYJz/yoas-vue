@@ -26,7 +26,50 @@ Vue.prototype.url={
 	validCanCheckIn: baseUrl + "/checkin/validCanCheckIn",
 	//查询当天签到状态
 	searchTodayCheckin: baseUrl + "/checkin/searchTodayCheckin",
-	searchUserSummary: baseUrl + "/user/searchUserSummary"
+	//查询用户摘要信息
+	searchUserSummary: baseUrl + "/user/searchUserSummary",
+	//查询月考勤记录
+	searchMonthCheckin:baseUrl+"/checkin/searchMonthCheckin",
+	//轮序请求新消息
+	refreshMessage: baseUrl + "/message/refreshMessage",
+	//分页查询消息列表
+	searchMessageByPage: baseUrl + "/message/searchMessageByPage",
+	
+	//根据 ID 查询消息记录
+	searchMessageById: baseUrl + "/message/searchMessageById",
+	//设置消息状态为已读
+	updateUnreadMessage: baseUrl + "/message/updateUnreadMessage",
+	//删除消息
+	deleteMessageRefById: baseUrl + "/message/deleteMessageRefById",
+	
+		// searchMyMeetingListByPage: baseUrl + "/meeting/searchMyMeetingListByPage",
+		// searchUserGroupByDept: baseUrl + "/user/searchUserGroupByDept",
+		// searchMembers: baseUrl + "/user/searchMembers",
+		// insertMeeting: baseUrl + "/meeting/insertMeeting",
+		// searchMeetingById: baseUrl + "/meeting/searchMeetingById",
+		// updateMeetingInfo: baseUrl + "/meeting/updateMeetingInfo",
+		// deleteMeetingById: baseUrl + "/meeting/deleteMeetingById",
+		// searchUserTaskListByPage: workflow + "/workflow/searchUserTaskListByPage",
+		// approvalMeeting: workflow + "/workflow/approvalMeeting",
+		// selectUserPhotoAndName: baseUrl + "/user/selectUserPhotoAndName",
+		// genUserSig: baseUrl + "/user/genUserSig",
+		// searchRoomIdByUUID: baseUrl + "/meeting/searchRoomIdByUUID",
+		// searchUserMeetingInMonth: baseUrl + "/meeting/searchUserMeetingInMonth",
+		// searchRoleOwnPermission: baseUrl + "/role/searchRoleOwnPermission",
+		// searchAllPermission:baseUrl+"/role/searchAllPermission",
+		// insertRole: baseUrl + "/role/insertRole",
+		// updateRolePermissions: baseUrl + "/role/updateRolePermissions",
+		// searchAllRole:baseUrl+"/role/searchAllRole",
+		// deleteRoleById:baseUrl+"/role/deleteRoleById",
+		// searchAllDept: baseUrl + "/dept/searchAllDept",
+		// insertDept: baseUrl + "/dept/insertDept",
+		// deleteDeptById: baseUrl + "/dept/deleteDeptById",
+		// updateDeptById: baseUrl + "/dept/updateDeptById",
+		// insertUser: baseUrl + "/user/insertUser",
+		// searchUserInfo: baseUrl + "/user/searchUserInfo",
+		// searchUserSelfInfo: baseUrl + "/user/searchUserSelfInfo",
+		// updateUserInfo: baseUrl + "/user/updateUserInfo",
+		// deleteUserById: baseUrl + "/user/deleteUserById"
 }
 
 // 全局权限验证
@@ -44,11 +87,12 @@ Vue.prototype.checkPermission = function(perms) {
 
 //全局 Ajax 封装对象
 Vue.prototype.ajax = function(url,method,data,fun){
+	console.log(uni.getStorageSync('token'));
 	uni.request({ 
 		"url":url,  //请求 URL
 		"method":method,  //请求方法
 		"header":{  //从 localStorage 中获得 token，附在请求头中提交
-			token:uni.getStorageInfoSync('token')
+			token:uni.getStorageSync('token')
 		},
 		"data":data,   //请求体中的数据
 		//请求处理成功的回调

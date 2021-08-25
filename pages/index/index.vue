@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-		<swiper circular="true" duration="1000" interval="8000" class="swiper">
+		<swiper circular="true" duration="500" interval="5000" class="swiper">
 				<swiper-item>
 					<image mode="widthFix" src="https://zackyj-typora.oss-cn-chengdu.aliyuncs.com/YOAS/swiper-1.jpg"></image>
 				</swiper-item>
@@ -11,7 +11,7 @@
 					<image mode="widthFix" src="https://zackyj-typora.oss-cn-chengdu.aliyuncs.com/YOAS/swiper-3.jpg"></image>
 				</swiper-item>
 		</swiper>
-		<view class="notify-container">
+		<view class="notify-container" @tap="toPage('消息提醒', '/pages/message_list/message_list')">
 			<view class="notify-title">
 				<image src="../../static/icon-1.png" mode="widthFix" class="notify-icon"></image>
 				 消息提醒
@@ -77,18 +77,53 @@
 						</view>
 					</view>
 				</view>
+		<uni-popup ref="popupMsg" type="top">
+				<uni-popup-message type="success" :message="'接收到' + lastRows + '条消息'" :duration="3000"/>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
+	// 气泡组件
+	import uniPopup from '@/components/uni-popup/uni-popup.vue';
+	import uniPopupMessage from '@/components/uni-popup/uni-popup-message.vue';
+	import uniPopupDialog from '@/components/uni-popup/uni-popup-dialog.vue';
 	export default {
+		components: {
+				uniPopup,
+				uniPopupMessage,
+				uniPopupDialog
+			},
 		data() {
 			return{
-				 unreadRows:0
+				timer: null,
+				unreadRows: 0,
+				lastRows: 0
 			}
 		},
 		onLoad() {
-
+			// 监听事件
+			let that = this;
+			uni.$on('showMessage', function() {
+				that.$refs.popupMsg.open();
+			});
+		},
+		onShow: function() {
+			let that = this;
+			let rfMsg = function(){
+				that.ajax(that.url.refreshMessage, 'GET', null, function(resp) {
+					that.unreadRows = resp.data.unreadRows;
+					that.lastRows = resp.data.lastRows;
+					if (that.lastRows > 0) {
+						uni.$emit('showMessage');
+					}
+				});
+				return rfMsg;
+			}
+			that.timer = setInterval(rfMsg(), 30 * 1000);
+		},
+		onHide:function() {
+			clearInterval(this.timer);
 		},
 		methods: {
 			//验证权限并跳转页面

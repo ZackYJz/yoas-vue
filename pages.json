@@ -56,7 +56,7 @@
 		{
 			"path": "pages/mine/mine",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "我的"
 			}
 		},
 		{
@@ -72,11 +72,34 @@
             "path" : "pages/checkin_result/checkin_result",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "签到状态",
                 "enablePullDownRefresh": false
             }
-            
-        }
+        },
+		{
+			"path" : "pages/my_checkin/my_checkin",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "月考勤记录",
+				"enablePullDownRefresh": false
+			}
+		}
+        ,{
+            "path" : "pages/message_list/message_list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "消息列表",
+                "enablePullDownRefresh": false
+            }
+        },
+		{
+		    "path" : "pages/message/message",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "消息详情",
+		        "enablePullDownRefresh": false
+		    }
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

@@ -88,6 +88,7 @@
 			let that=this
 			that.ajax(that.url.searchTodayCheckin,"GET",null,function(resp){
 				let result=resp.data.result
+				console.log(result)
 				that.name=result.name
 				that.photo=result.photo
 				that.deptName = result.deptName

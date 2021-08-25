@@ -114,7 +114,7 @@
 											district:district
 										},
 										success:function(resp){
-											if(resp.statusCode == 500 && resp.data == "人脸数据不存在🙄"){
+											if(resp.statusCode == 500 && resp.data == "人脸数据不存在"){
 												uni.hideLoading()
 												uni.showModal({
 													title:"提示",
